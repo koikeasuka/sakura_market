@@ -20,6 +20,8 @@ gem 'solid_cable'
 gem 'solid_cache'
 gem 'solid_queue'
 
+gem 'simple_form'
+
 gem 'bootsnap', require: false
 
 gem 'kamal', require: false
