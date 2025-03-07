@@ -29,6 +29,7 @@ gem 'thruster', require: false
 group :development, :test do
   gem 'brakeman', require: false
   gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
+  gem 'haml-lint'
 end
 
 group :development do
