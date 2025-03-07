@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'rails', '~> 8.0.1'
 
 gem 'cssbundling-rails'
+gem 'haml-rails'
+gem 'html2haml'
 gem 'jbuilder'
 gem 'jsbundling-rails'
 # dbはバージョン固定
