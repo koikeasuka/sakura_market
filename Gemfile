@@ -32,6 +32,7 @@ group :development, :test do
   gem 'brakeman', require: false
   gem 'capybara'
   gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
+  gem 'factory_bot_rails'
   gem 'haml-lint'
   gem 'rspec-rails', git: 'https://github.com/rspec/rspec-rails'
 end
