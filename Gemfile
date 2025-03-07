@@ -35,6 +35,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'haml-lint'
   gem 'rspec-rails', git: 'https://github.com/rspec/rspec-rails'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
 end
 
 group :development do
