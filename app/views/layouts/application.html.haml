@@ -15,4 +15,10 @@
     = stylesheet_link_tag :app, "data-turbo-track": "reload"
     = javascript_include_tag "application", "data-turbo-track": "reload", type: "module"
   %body
-    = yield
+    %nav.navbar.navbar-expand-lg.bg-body-tertiary
+      .container-fluid
+        = link_to 'さくらマーケット', '#', class: 'navbar-brand'
+    .container
+      .row.justify-content-center
+        .col-md-8.col-lg-6
+          = yield
