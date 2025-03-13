@@ -11,7 +11,7 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'capybara/rails'
 require 'capybara/rspec'
-# Rails.root.glob('spec/support/**/*.rb').sort_by(&:to_s).each { |f| require f }
+Rails.root.glob('spec/support/**/*.rb').sort_by(&:to_s).each { |f| require f }
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -20,9 +20,9 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  # config.fixture_paths = [
-  #   Rails.root.join('spec/fixtures')
-  # ]
+  config.fixture_paths = [
+    Rails.root.join('spec/fixtures')
+  ]
 
   config.before(type: :system) do |example|
     if example.metadata[:js]
@@ -61,4 +61,5 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  config.include FactoryBot::Syntax::Methods
 end
