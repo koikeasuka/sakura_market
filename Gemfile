@@ -7,6 +7,7 @@ gem 'cssbundling-rails'
 gem 'devise'
 gem 'haml-rails'
 gem 'html2haml'
+gem 'image_processing'
 gem 'jbuilder'
 gem 'jsbundling-rails'
 # dbはバージョン固定
