@@ -58,7 +58,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_14_153722) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "position", default: 1, null: false
-    t.index ["position"], name: "index_items_on_position", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
