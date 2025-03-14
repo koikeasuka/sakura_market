@@ -6,6 +6,7 @@
         = button_to '削除', admins_item_path(@item), method: :delete, data: { turbo_confirm: '削除してもよろしいですか' }, class: 'btn btn-danger'
       .card-body
         %h5.card-title= @item.name
+        = image_tag @item.product_photo.variant(:image)
         %p.card-text.border-bottom.pb-2.mb-4
           %strong= Item.human_attribute_name(:price)
           = number_to_currency(@item.price)
