@@ -28,6 +28,8 @@ RSpec.describe '商品画面', type: :system do
 
     it '新規登録ができること', :js do
       visit new_admins_item_path
+
+      attach_file '商品画像', Rails.root.join('spec/fixtures/items/hakusai.png')
       fill_in '商品名', with: '白菜'
       fill_in '商品説明', with: 'シャキシャキの白菜です'
       fill_in '価格', with: 200
@@ -40,6 +42,7 @@ RSpec.describe '商品画面', type: :system do
         item = Item.last
         # 登録後、詳細画面に遷移することを確認
         expect(page).to have_current_path admins_items_path
+        expect(item.product_photo.blob.filename).to eq 'hakusai.png'
         expect(item).to have_attributes(name: '白菜', description: 'シャキシャキの白菜です', price: 200)
       end.to change(Item, :count).by(1)
     end
@@ -81,6 +84,7 @@ RSpec.describe '商品画面', type: :system do
       visit edit_admins_item_path(item)
       expect(page).to have_content '商品編集'
 
+      attach_file '商品画像', Rails.root.join('spec/fixtures/items/suika.png')
       fill_in '商品名', with: '太陽のスイカ'
       fill_in '商品説明', with: '太陽をたくさん吸収した、種の少ない太陽のスイカです'
       fill_in '価格', with: 1500
@@ -89,6 +93,7 @@ RSpec.describe '商品画面', type: :system do
 
       expect(page).to have_content '商品情報を更新しました'
       item.reload
+      expect(item.product_photo.blob.filename).to eq 'suika.png'
       expect(item).to have_attributes(name: '太陽のスイカ', description: '太陽をたくさん吸収した、種の少ない太陽のスイカです', price: 1500)
     end
   end
