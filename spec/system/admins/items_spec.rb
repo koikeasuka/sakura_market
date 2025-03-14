@@ -21,6 +21,19 @@ RSpec.describe '商品画面', type: :system do
       expect(page).to have_content '太陽のトマトです'
       expect(page).to have_content '300円'
     end
+
+    it 'ページの順番を入れ替えることができる', :js do
+      sign_in yamada, scope: :admin
+
+      visit admins_items_path
+
+      # ドラッグ&ドロップで順番を入れ替える
+      find('tbody').first('tr').drag_to find('tbody').all('tr')[1]
+
+      # 順番が入れ替わっていることを確認
+      expect(find('tbody').first('tr')).to have_content 'トマト'
+      expect(find('tbody').all('tr')[1]).to have_content 'みかん'
+    end
   end
 
   describe '新規登録' do
@@ -51,7 +64,7 @@ RSpec.describe '商品画面', type: :system do
   describe '詳細' do
     before { sign_in yamada, scope: :admin }
 
-    let(:item) { create(:item, name: 'メロン', description: '種の少ないメロン', price: 1500) }
+    let(:item) { create(:item, name: 'メロン', description: '種の少ないメロン', price: 1500, position: 1) }
 
     it '詳細画面が表示される' do
       visit admins_item_path(item)
@@ -60,6 +73,7 @@ RSpec.describe '商品画面', type: :system do
       expect(page).to have_content 'メロン'
       expect(page).to have_content '種の少ないメロン'
       expect(page).to have_content '1,500円'
+      expect(page).to have_content '表示順 1'
     end
 
     it '削除できる', :js do
