@@ -8,4 +8,11 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   validates :price, presence: true
+  before_validation :set_position
+
+  private
+
+  def set_position
+    self.position ||= Item.count + 1
+  end
 end
