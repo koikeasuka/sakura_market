@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   # root "posts#index"
   namespace :admins do
     root to: 'items#index'
-    resources :items
+    resources :items do
+      member do
+        patch :sort
+      end
+    end
   end
 end

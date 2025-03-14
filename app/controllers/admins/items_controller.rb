@@ -1,8 +1,8 @@
 class Admins::ItemsController < Admins::ApplicationController
-  before_action :set_item, only: %i[show edit update destroy]
+  before_action :set_item, only: %i[show edit update destroy sort]
 
   def index
-    @items = Item.order(id: :desc)
+    @items = Item.order(position: :asc)
   end
 
   def show
@@ -38,6 +38,11 @@ class Admins::ItemsController < Admins::ApplicationController
     redirect_to admins_items_path, status: :see_other, notice: '商品を削除しました'
   end
 
+  def sort
+    @item.update!(sort_params)
+    redirect_to admins_items_path(@item), status: :see_other
+  end
+
   private
 
   def set_item
@@ -46,5 +51,9 @@ class Admins::ItemsController < Admins::ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :description, :price, :product_photo)
+  end
+
+  def sort_params
+    params.require(:item).permit(:position)
   end
 end

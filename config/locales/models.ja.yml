@@ -11,3 +11,4 @@ ja:
         description: 商品説明
         price: 価格
         product_photo: 商品画像
+        position: 表示順
