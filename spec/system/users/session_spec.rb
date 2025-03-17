@@ -12,5 +12,11 @@ RSpec.describe '会員画面ログイン・ログアウト', type: :system do
       click_on 'ログアウト'
       expect(page).to have_content 'ログアウトしました'
     end
+
+    it 'ヘッダーに会員設定のリンクが表示される' do
+      visit root_path
+
+      expect(page).to have_link '会員設定', href: edit_user_registration_path
+    end
   end
 end
