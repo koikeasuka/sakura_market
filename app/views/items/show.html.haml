@@ -1,0 +1,11 @@
+.row
+  .col-md-8.offset-md-2
+    %h2 商品詳細
+    .text-end= link_to '戻る', items_path, class: 'btn btn-secondary'
+  .col-md-4
+    .card
+      = image_tag product_photo_image(@item), class: 'img-fluid'
+  .col-md-8
+    %h3= @item.name
+    %p.text-muted= number_to_currency(@item.price)
+    %p.text-muted= @item.description
