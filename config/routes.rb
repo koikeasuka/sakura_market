@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   devise_for :admins
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -22,5 +23,9 @@ Rails.application.routes.draw do
         patch :sort
       end
     end
+  end
+
+  namespace :users do
+    root to: 'items#index'
   end
 end

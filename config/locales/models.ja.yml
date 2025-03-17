@@ -6,6 +6,9 @@ ja:
       admin:
         email: メールアドレス
         password: パスワード
+      user:
+        email: メールアドレス
+        password: パスワード
       item:
         name: 商品名
         description: 商品説明
