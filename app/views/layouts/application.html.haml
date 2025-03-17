@@ -30,6 +30,17 @@
       %nav.navbar.navbar-expand-lg.bg-danger-subtle
         .container-fluid
           = link_to 'さくらマーケット', 'items_path', class: 'navbar-brand'
+          %button.navbar-toggler{"aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarNav", "data-bs-toggle" => "collapse", type: "button"}
+            %span.navbar-toggler-icon
+          .d-flex.justify-content-around
+            #navbarNav.collapse.navbar-collapse
+              %ul.navbar-nav
+                - if user_signed_in?
+                  %li.nav-item
+                    = button_to 'ログアウト', destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: 'btn btn-secondary'
+                - else
+                  %li.nav-item
+                    = link_to 'ログイン', new_user_session_path, class: 'btn btn-secondary'
     .container
       .row.justify-content-center
         .col-md-8.col-lg-6
