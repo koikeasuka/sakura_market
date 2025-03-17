@@ -24,8 +24,4 @@ Rails.application.routes.draw do
       end
     end
   end
-
-  namespace :users do
-    root to: 'items#index'
-  end
 end
