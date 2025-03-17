@@ -1,0 +1,11 @@
+%h2 TOPページ
+= paginate @items
+.row
+  - @items.each do |item|
+    .col-md-4
+      .card.mb-4.border-0
+        = image_tag product_photo_image(item), class: 'card-img-top'
+        .card-body
+          %p.card-title.fw-bold= item.name
+          %p.card-text= number_to_currency(item.price)
+= paginate @items

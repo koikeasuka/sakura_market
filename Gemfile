@@ -11,6 +11,7 @@ gem 'html2haml'
 gem 'image_processing'
 gem 'jbuilder'
 gem 'jsbundling-rails'
+gem 'kaminari'
 # dbはバージョン固定
 gem 'mysql2', '~> 0.5'
 gem 'propshaft'
