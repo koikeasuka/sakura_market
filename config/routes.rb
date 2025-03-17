@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'items#index'
 
+  resources :items, only: %i[index show]
+
   namespace :admins do
     root to: 'items#index'
     resources :items do
