@@ -3,13 +3,13 @@
   = f.input :reset_password_token, as: :hidden
   .form-inputs
     = f.input :password,
-      label: "New password",
+      label: '新しいパスワード',
       required: true,
       autofocus: true,
-      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+      hint: ("最低 #{@minimum_password_length} 文字" if @minimum_password_length),
       input_html: { autocomplete: "new-password" }
     = f.input :password_confirmation,
-      label: "Confirm your new password",
+      label: '新しいパスワード（確認用）',
       required: true,
       input_html: { autocomplete: "new-password" }
   .form-actions
