@@ -37,10 +37,12 @@
               %ul.navbar-nav
                 - if user_signed_in?
                   %li.nav-item
-                    = button_to 'ログアウト', destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: 'btn btn-secondary'
+                    = link_to '会員設定', edit_user_registration_path, class: 'nav-link'
+                  %li.nav-item
+                    = button_to 'ログアウト', destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: 'nav-link'
                 - else
                   %li.nav-item
-                    = link_to 'ログイン', new_user_session_path, class: 'btn btn-secondary'
+                    = link_to 'ログイン', new_user_session_path, class: 'nav-link'
     .container
       .row.justify-content-center
         .col-md-8.col-lg-6
