@@ -7,6 +7,8 @@ RSpec.describe '管理画面ログイン・ログアウト', type: :system do
     before { sign_in yamada, scope: :admin }
 
     it 'ログアウトできる' do
+      sign_in yamada, scope: :admin
+
       visit admins_root_path
 
       click_on 'ログアウト'
