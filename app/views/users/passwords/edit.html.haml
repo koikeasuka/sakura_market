@@ -1,0 +1,17 @@
+%h2 パスワードを変更する
+= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+  = f.input :reset_password_token, as: :hidden
+  .form-inputs
+    = f.input :password,
+      label: '新しいパスワード',
+      required: true,
+      autofocus: true,
+      hint: ("最低 #{@minimum_password_length} 文字" if @minimum_password_length),
+      input_html: { autocomplete: "new-password" }
+    = f.input :password_confirmation,
+      label: '新しいパスワード（確認用）',
+      required: true,
+      input_html: { autocomplete: "new-password" }
+  .form-actions
+    = f.button :submit, 'パスワードを変更する'
+= render "users/shared/links"
