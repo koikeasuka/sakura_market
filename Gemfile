@@ -34,6 +34,7 @@ end
 
 group :development do
   gem 'bullet'
+  gem 'letter_opener'
   gem 'sgcop', github: 'SonicGarden/sgcop'
   gem 'web-console'
 end
