@@ -15,7 +15,7 @@ class Users::CartItemsController < Users::ApplicationController
 
   private
 
-  def permitted_params
-    params.require(:cart_item).permit(:item_id)
+  def cart_item_params
+    params.permit(:item_id)
   end
 end
