@@ -28,5 +28,7 @@ Rails.application.routes.draw do
 
   namespace :users do
     resource :shipping_address, only: %i[new edit show create update]
+    resource :cart, only: %i[show]
+    resources :cart_items, only: %i[create destroy]
   end
 end
