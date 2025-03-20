@@ -22,6 +22,10 @@
           .d-flex.justify-content-around
             %ul.navbar-nav
               %li.nav-item
+                = link_to '商品', admins_items_path, class: 'nav-link'
+              %li.nav-item
+                = link_to '会員情報', admins_users_path, class: 'nav-link'
+              %li.nav-item
                 = button_to 'ログアウト', destroy_admin_session_path, method: :delete, data: { turbo_method: :delete }, class: 'btn btn-secondary'
     - else
       %nav.navbar.navbar-expand-lg.bg-danger-subtle

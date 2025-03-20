@@ -10,6 +10,7 @@ ja:
       user:
         email: メールアドレス
         password: パスワード
+        updated_at: 最終更新日時
       item:
         name: 商品名
         description: 商品説明

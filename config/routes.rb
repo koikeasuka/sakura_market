@@ -23,6 +23,7 @@ Rails.application.routes.draw do
         patch :sort
       end
     end
+    resources :users, except: %i[new create]
   end
 
   namespace :users do

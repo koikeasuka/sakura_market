@@ -1,0 +1,16 @@
+.row
+  .col-md-8.offset-md-2
+    .card.mb-3
+      .card-header.d-flex.justify-content-between
+        %h2 会員詳細
+        = button_to '削除', admins_user_path(@user), method: :delete, data: { turbo_confirm: '削除してもよろしいですか' }, class: 'btn btn-danger'
+      .card-body
+        %p.card-text.border-bottom.pb-2.mb-4
+          %strong= User.human_attribute_name(:email)
+          = @user.email
+        %p.card-text.border-bottom.pb-2.mb-4
+          %strong= User.human_attribute_name(:updated_at)
+          = l @user.updated_at, format: :long
+      .card-footer.d-flex.gap-2
+        = link_to '編集', edit_admins_user_path(@user), class: 'btn btn-primary'
+        = link_to '戻る', admins_users_path, class: 'btn btn-secondary'
