@@ -2,9 +2,8 @@
 %table.table
   %thead
     %tr
-      %th= Item.human_attribute_name(:email)
-      %th= Item.human_attribute_name(:updated_at)
-
+      %th= User.human_attribute_name(:email)
+      %th= User.human_attribute_name(:updated_at)
   %tbody
     - @users.each do |user|
       %tr
