@@ -1,0 +1,12 @@
+= simple_form_for [:admins, user] do |f|
+  .form-inputs
+    = f.input :email, required: true, autofocus: true
+    = f.input :password,
+      hint: '変更する場合のみ入力してください',
+      required: false,
+      input_html: { autocomplete: "new-password" }
+    = f.input :password_confirmation,
+      required: false,
+      input_html: { autocomplete: "new-password" }
+  .form-actions
+    = f.button :submit
