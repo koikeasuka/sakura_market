@@ -33,6 +33,11 @@
                 %li.nav-item
                   = link_to '会員設定', edit_user_registration_path, class: 'nav-link'
                 %li.nav-item
+                  - if current_user.shipping_address.present?
+                    = link_to '配送先住所', edit_users_shipping_address_path, class: 'nav-link'
+                  - else
+                    = link_to '配送先住所', new_users_shipping_address_path, class: 'nav-link'
+                %li.nav-item
                   = button_to 'ログアウト', destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: 'nav-link'
               - else
                 %li.nav-item
