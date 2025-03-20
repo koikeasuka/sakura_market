@@ -1,6 +1,6 @@
 class Users::CartItemsController < Users::ApplicationController
   def create
-    cart_item = current_cart.cart_items.new(permitted_params)
+    cart_item = current_cart.cart_items.build(cart_item_params)
     if cart_item.save
       redirect_to items_path, notice: 'カートに追加しました'
     else
@@ -10,7 +10,7 @@ class Users::CartItemsController < Users::ApplicationController
 
   def destroy
     current_cart.cart_items.find(params[:id]).destroy!
-    redirect_to current_carts_path, notice: 'カートから削除しました', status: :see_other
+    redirect_to users_cart_path, notice: 'カートから削除しました', status: :see_other
   end
 
   private
