@@ -12,6 +12,11 @@ class Admins::UsersController < ApplicationController
   end
 
   def update
+    if params[:user][:password].blank?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+    end
+
     @user.skip_reconfirmation!
     if @user.update(user_params)
       redirect_to admins_user_path, notice: '会員情報を更新しました'
