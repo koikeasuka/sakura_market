@@ -1,0 +1,11 @@
+= simple_form_for [:users, shipping_address], url: users_shipping_address_path do |f|
+  .form-inputs
+    = f.input :last_name, required: true, autofocus: true
+    = f.input :first_name, required: true
+    = f.input :tel, required: true
+    = f.input :post_code, required: true
+    = f.association :prefecture, required: true
+    = f.input :city, required: true
+    = f.input :other_address, required: true
+  .form-actions
+    = f.button :submit
