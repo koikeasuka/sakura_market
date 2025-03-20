@@ -26,6 +26,6 @@ Rails.application.routes.draw do
   end
 
   namespace :users do
-    resource :shipping_address, only: %i[new edit create update]
+    resource :shipping_address, only: %i[new edit show create update]
   end
 end

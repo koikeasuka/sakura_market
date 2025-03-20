@@ -1,5 +1,5 @@
 class Users::ShippingAddressesController < Users::ApplicationController
-  before_action :set_shipping_address, only: %i[edit update]
+  before_action :set_shipping_address, only: %i[edit show update]
 
   def new
     @shipping_address = current_user.build_shipping_address
@@ -8,11 +8,14 @@ class Users::ShippingAddressesController < Users::ApplicationController
   def edit
   end
 
+  def show
+  end
+
   def create
     @shipping_address = current_user.build_shipping_address(shipping_address_params)
 
     if @shipping_address.save
-      redirect_to edit_users_shipping_address_path, notice: '配送先住所を登録しました'
+      redirect_to users_shipping_address_path, notice: '配送先住所を登録しました'
     else
       render :new, status: :unprocessable_entity
     end
@@ -20,7 +23,7 @@ class Users::ShippingAddressesController < Users::ApplicationController
 
   def update
     if @shipping_address.update(shipping_address_params)
-      redirect_to items_path, notice: '配送先住所を更新しました'
+      redirect_to users_shipping_address_path, notice: '配送先住所を更新しました'
     else
       render :edit, status: :unprocessable_entity
     end
