@@ -1,0 +1,32 @@
+.row
+  .col-md-8.offset-md-2
+    %h2 配送先住所
+    .text-end= link_to '戻る', items_path, class: 'btn btn-secondary'
+  - if @shipping_address
+    .col-md-8
+      %p
+        %strong 姓：
+        = @shipping_address.last_name
+      %p
+        %strong 名：
+        = @shipping_address.first_name
+      %p
+        %strong 郵便番号：
+        = @shipping_address.post_code
+      %p
+        %strong 電話番号：
+        = @shipping_address.tel
+      %p
+        %strong 都道府県：
+        = @shipping_address.prefecture.name
+      %p
+        %strong 市区町村：
+        = @shipping_address.city
+      %p
+        %strong その他の住所：
+        = @shipping_address.other_address
+      = link_to '編集', edit_users_shipping_address_path, class: 'btn btn-outline-secondary'
+  - else
+    .col-md-8
+      %p 配送先住所の登録がされていません。配送先住所の登録がないと購入できないため登録をお願いします。
+      = link_to '新規登録', new_users_shipping_address_path, class: 'btn btn-outline-secondary'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_17_152712) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_18_160808) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -58,6 +58,20 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_17_152712) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "position", default: 1, null: false
+  end
+
+  create_table "shipping_addresses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "last_name", default: "", null: false
+    t.string "first_name", default: "", null: false
+    t.string "tel", default: "", null: false
+    t.string "post_code", default: "", null: false
+    t.bigint "prefecture_id", null: false
+    t.string "city", default: "", null: false
+    t.string "other_address", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_shipping_addresses_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
