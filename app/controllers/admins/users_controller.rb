@@ -12,6 +12,7 @@ class Admins::UsersController < ApplicationController
   end
 
   def update
+    @user.skip_reconfirmation!
     if @user.update(user_params)
       redirect_to admins_user_path, notice: '会員情報を更新しました'
     else
