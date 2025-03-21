@@ -3,4 +3,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :shipping_address, dependent: :destroy
+  has_one :cart, dependent: :destroy
 end

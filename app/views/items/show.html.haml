@@ -8,4 +8,5 @@
   .col-md-8
     %h3= @item.name
     %p.text-muted= number_to_currency(@item.price)
+    = button_to 'カートに入れる', users_cart_items_path, method: :post, params: { item_id: @item.id }, class: 'btn btn-light'
     %p.text-muted= @item.description
