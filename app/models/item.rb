@@ -3,6 +3,8 @@ class Item < ApplicationRecord
     attachable.variant :thumb, resize_to_limit: [100, 100]
     attachable.variant :image, resize_to_fit: [300, 300]
   end
+  has_many :cart_items, dependent: :destroy
+  has_many :purchase_items, dependent: :restrict_with_exception
   acts_as_list
 
   validates :name, presence: true
