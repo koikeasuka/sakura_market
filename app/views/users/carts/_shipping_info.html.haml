@@ -19,17 +19,16 @@
           %h5.mb-3 配送先住所
           - if current_user.shipping_address
             %p
-              %strong= ShippingAddress.human_attribute_name(:name)
-              = current_user.shipping_address.last_name + current_user.shipping_address.first_name
-            %p
-              %strong= ShippingAddress.human_attribute_name(:post_code)
-              = current_user.shipping_address.post_code
+              %strong= ShippingAddress.human_attribute_name(:full_name)
+              = full_name(current_user.shipping_address)
             %p
               %strong= ShippingAddress.human_attribute_name(:tel)
               = current_user.shipping_address.tel
             %p
               %strong= ShippingAddress.human_attribute_name(:address)
-              = current_user.shipping_address.prefecture.name + current_user.shipping_address.city + current_user.shipping_address.other_address
+              = "〒#{current_user.shipping_address.post_code}"
+              %br
+              = address(current_user.shipping_address)
             = link_to '編集', edit_users_shipping_address_path, class: 'btn btn-outline-secondary'
           - else
             %p 配送先住所の登録がされていません。配送先住所の登録がないと購入できません。
