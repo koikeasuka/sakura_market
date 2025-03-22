@@ -5,25 +5,25 @@
   - if @shipping_address
     .col-md-8
       %p
-        %strong 姓：
+        %strong= ShippingAddress.human_attribute_name(:last_name)
         = @shipping_address.last_name
       %p
-        %strong 名：
+        %strong= ShippingAddress.human_attribute_name(:first_name)
         = @shipping_address.first_name
       %p
-        %strong 郵便番号：
+        %strong= ShippingAddress.human_attribute_name(:post_code)
         = @shipping_address.post_code
       %p
-        %strong 電話番号：
+        %strong= ShippingAddress.human_attribute_name(:tel)
         = @shipping_address.tel
       %p
-        %strong 都道府県：
+        %strong= ShippingAddress.human_attribute_name(:prefecture)
         = @shipping_address.prefecture.name
       %p
-        %strong 市区町村：
+        %strong= ShippingAddress.human_attribute_name(:city)
         = @shipping_address.city
       %p
-        %strong その他の住所：
+        %strong= ShippingAddress.human_attribute_name(:other_address)
         = @shipping_address.other_address
       = link_to '編集', edit_users_shipping_address_path, class: 'btn btn-outline-secondary'
   - else
