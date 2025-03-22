@@ -44,11 +44,6 @@
           %h4.mb-0 合計
         .col-md-3.text-end
           %h4.mb-0= number_to_currency(@cart.total_price)
-      -# .row.align-items-center
-      -#   .col-md-9
-      -#     %h4.mb-0 合計
-      -#   .col-md-3.text-end
-      -#     %h4.mb-0= number_to_currency(@cart.total_price)
   .d-flex.justify-content-end
     .p-2= link_to '買い物を続ける', items_path, class: 'btn btn-outline-secondary btn-lg'
     .p-2= button_to '購入する', '#', method: :post, class: 'btn btn-secondary btn-lg'
