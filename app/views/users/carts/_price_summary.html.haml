@@ -1,0 +1,28 @@
+.card.mb-2
+  .card-body
+    .row.align-items-center.mb-2
+      .col-md-9
+        %h5.mb-0 小計
+      .col-md-3.text-end
+        %h5.mb-0= number_to_currency(cart.sub_total)
+    .row.align-items-center.mb-2
+      .col-md-9
+        %h5.mb-0 送料
+      .col-md-3.text-end
+        %h5.mb-0= number_to_currency(cart.shipping_fee)
+    .row.align-items-center.mb-2
+      .col-md-9
+        %h5.mb-0 代引き手数料
+      .col-md-3.text-end
+        %h5.mb-0= number_to_currency(cart.cash_on_delivery_fee)
+    .row.align-items-center.mb-2
+      .col-md-9
+        %h5.mb-0 消費税
+      .col-md-3.text-end
+        %h5.mb-0= number_to_currency(cart.tax)
+    %hr.my-3
+    .row.align-items-center
+      .col-md-9
+        %h4.mb-0 合計
+      .col-md-3.text-end
+        %h4.mb-0= number_to_currency(@cart.total_price)
