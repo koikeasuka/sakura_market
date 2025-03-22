@@ -120,7 +120,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_22_172006) do
     t.string "city", default: "", null: false
     t.string "other_address", default: "", null: false
     t.date "delivery_date"
-    t.string "delivery_time_slot"
+    t.bigint "delivery_time_slot_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["purchase_id"], name: "index_shippings_on_purchase_id"

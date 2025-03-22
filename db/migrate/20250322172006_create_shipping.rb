@@ -10,7 +10,7 @@ class CreateShipping < ActiveRecord::Migration[8.0]
       t.string :city, null: false, default: ''
       t.string :other_address, null: false, default: ''
       t.date :delivery_date
-      t.string :delivery_time_slot
+      t.bigint :delivery_time_slot_id
 
       t.timestamps
     end
