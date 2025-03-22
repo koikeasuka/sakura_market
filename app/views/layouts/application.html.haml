@@ -30,7 +30,7 @@
     - else
       %nav.navbar.navbar-expand-lg.bg-danger-subtle
         .container-fluid
-          = link_to 'さくらマーケット', 'items_path', class: 'navbar-brand'
+          = link_to 'さくらマーケット', items_path, class: 'navbar-brand'
           .d-flex.justify-content-around
             %ul.navbar-nav
               - if user_signed_in?
