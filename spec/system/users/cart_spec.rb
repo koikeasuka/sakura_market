@@ -9,18 +9,22 @@ RSpec.describe 'カート', type: :system do
     context 'カート内に商品が入っている場合' do
       before do
         cart = create(:cart, user: yamada)
-        create(:cart_item, cart: cart, item: create(:item, name: 'バナナ', price: 100))
-        create(:cart_item, cart: cart, item: create(:item, name: 'りんご', price: 200))
+        create(:cart_item, cart: cart, item: create(:item, name: 'バナナ', price: 150))
+        create(:cart_item, cart: cart, item: create(:item, name: 'りんご', price: 250))
       end
 
       it '商品が表示される' do
         visit users_cart_path
 
         expect(page).to have_content 'バナナ'
-        expect(page).to have_content '100円'
+        expect(page).to have_content '150円'
         expect(page).to have_content 'りんご'
-        expect(page).to have_content '200円'
-        expect(page).to have_content '300円'
+        expect(page).to have_content '250円'
+        expect(page).to have_content '400円' # 小計
+        expect(page).to have_content '600円' # 送料
+        expect(page).to have_content '300円' # 代引き手数料
+        expect(page).to have_content '104円' # 消費税
+        expect(page).to have_content '1,404円' # 合計
       end
 
       it '商品を削除できる', :js do
@@ -35,10 +39,9 @@ RSpec.describe 'カート', type: :system do
           expect(page).to have_content 'カートから削除しました'
           expect(page).to have_current_path users_cart_path
           expect(page).not_to have_content 'バナナ'
-          expect(page).not_to have_content '100円'
+          expect(page).not_to have_content '150円'
           expect(page).to have_content 'りんご'
-          expect(page).to have_content '200円'
-          expect(page).to have_content '200円'
+          expect(page).to have_content '250円'
         end.to change(CartItem, :count).by(-1)
       end
     end
