@@ -30,5 +30,6 @@ Rails.application.routes.draw do
     resource :shipping_address, only: %i[new edit show create update]
     resource :cart, only: %i[show]
     resources :cart_items, only: %i[create destroy]
+    resources :purchases, only: %i[create]
   end
 end
