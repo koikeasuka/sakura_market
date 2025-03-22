@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_20_150909) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_22_172006) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -76,6 +76,26 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_20_150909) do
     t.integer "position", default: 1, null: false
   end
 
+  create_table "purchase_items", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "purchase_id", null: false
+    t.bigint "item_id", null: false
+    t.integer "price", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_purchase_items_on_item_id"
+    t.index ["purchase_id"], name: "index_purchase_items_on_purchase_id"
+  end
+
+  create_table "purchases", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "shipping_fee", default: 0, null: false
+    t.integer "cash_on_delivery_fee", default: 0, null: false
+    t.integer "tax", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_purchases_on_user_id"
+  end
+
   create_table "shipping_addresses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "last_name", default: "", null: false
@@ -88,6 +108,22 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_20_150909) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_shipping_addresses_on_user_id"
+  end
+
+  create_table "shippings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "purchase_id", null: false
+    t.string "last_name", default: "", null: false
+    t.string "first_name", default: "", null: false
+    t.string "tel", default: "", null: false
+    t.string "post_code", default: "", null: false
+    t.bigint "prefecture_id", null: false
+    t.string "city", default: "", null: false
+    t.string "other_address", default: "", null: false
+    t.date "delivery_date"
+    t.string "delivery_time_slot"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["purchase_id"], name: "index_shippings_on_purchase_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
