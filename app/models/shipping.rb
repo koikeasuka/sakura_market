@@ -2,7 +2,7 @@ class Shipping < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :purchase
   belongs_to :prefecture
-  belongs_to :delivery_time_slot
+  belongs_to :delivery_time_slot, optional: true
 
   validates :last_name, presence: true
   validates :first_name, presence: true
