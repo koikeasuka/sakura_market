@@ -3,7 +3,9 @@
     .row.mb-4
       .col-md-12
         %h5.mb-3 配送日時
-        = f.input :delivery_date, as: :date, html5: true, label: '配送日', input_html: { min: 3.business_day.from_now, max: 14.business_day.from_now }
+        = f.input :delivery_date, as: :date, html5: true, label: '配送日',
+          input_html: { min: 3.business_day.from_now, max: 14.business_day.from_now },
+          hint: '3営業日後から14営業日までの間で選択してください'
         = f.input :delivery_time_slot_id, collection: DeliveryTimeSlot.all.order(id: :asc), label: '配送時間帯'
     %hr.my-3
     .row.mb-4
