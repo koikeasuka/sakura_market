@@ -3,7 +3,7 @@ class CashOnDeliveryFee < ActiveHash::Base
     {
       id: 1,
       min_price: 0,
-      max_price: 9999,
+      max_price: 10000,
       fee: 300,
     },
     {
@@ -14,13 +14,13 @@ class CashOnDeliveryFee < ActiveHash::Base
     },
     {
       id: 3,
-      min_price: 29999,
+      min_price: 30000,
       max_price: 100000,
       fee: 600,
     },
     {
       id: 4,
-      min_price: 299999,
+      min_price: 100000,
       max_price: nil,
       fee: 1000,
     },
