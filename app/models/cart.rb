@@ -12,8 +12,8 @@ class Cart < ApplicationRecord
   end
 
   def shipping_fee
-    # 送料は6商品毎に600円追加する
-    shipping_count = (items.size / 6.0).ceil
+    # 送料は5商品毎に600円追加する
+    shipping_count = (items.size / 5.0).ceil
     shipping_count * 600
   end
 
