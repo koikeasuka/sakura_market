@@ -15,8 +15,9 @@
       .col-md-2.text-end
         = button_to '削除', users_cart_item_path(cart_item), method: :delete, data: { turbo_confirm: '削除してもよろしいですか' }, class: 'btn btn-light'
     %hr.my-2
-  = render 'price_summary', cart: @cart
-  = render 'shipping_info'
-  .d-flex.justify-content-end
-    .p-2= link_to '買い物を続ける', items_path, class: 'btn btn-outline-secondary btn-lg'
-    .p-2= button_to '購入する', '#', method: :post, class: 'btn btn-secondary btn-lg'
+  = simple_form_for @cart_shipping, method: :post, url: users_purchases_path do |f|
+    = render 'price_summary', cart: @cart
+    = render 'shipping_info', f: f
+    .d-flex.justify-content-end
+      .p-2= link_to '買い物を続ける', items_path, class: 'btn btn-outline-secondary btn-lg'
+      .p-2= f.button :submit, '購入する', class: 'btn btn-secondary btn-lg', disabled: current_user.shipping_address.nil?

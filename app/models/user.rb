@@ -4,4 +4,5 @@ class User < ApplicationRecord
 
   has_one :shipping_address, dependent: :destroy
   has_one :cart, dependent: :destroy
+  has_many :purchases, dependent: :destroy
 end
