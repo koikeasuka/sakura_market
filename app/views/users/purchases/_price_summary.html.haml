@@ -1,0 +1,16 @@
+.card.mb-2
+  .card-header.d-flex.justify-content-between
+    %h4 支払情報
+  .card-body
+    %p.card-text.border-bottom.pb-2.mb-4
+      %strong= Purchase.human_attribute_name(:sub_total)
+      = number_to_currency(@purchase.sub_total)
+    %p.card-text.border-bottom.pb-2.mb-4
+      %strong= Purchase.human_attribute_name(:shipping_fee)
+      = number_to_currency(@purchase.shipping_fee)
+    %p.card-text.border-bottom.pb-2.mb-4
+      %strong= Purchase.human_attribute_name(:cash_on_delivery_fee)
+      = number_to_currency(@purchase.cash_on_delivery_fee)
+    %p.card-text.border-bottom.pb-2.mb-4
+      %strong= Purchase.human_attribute_name(:total_price)
+      = number_to_currency(@purchase.total_price)

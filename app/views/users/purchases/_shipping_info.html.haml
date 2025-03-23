@@ -1,0 +1,26 @@
+.card.mb-2
+  .card-body
+    .row.mb-4
+      .col-md-12
+        %h5.mb-3 配送日時
+        %p.card-text.border-bottom.pb-2.mb-4
+          %strong= Shipping.human_attribute_name(:delivery_date)
+          = formatted_delivery_date(shipping.delivery_date)
+        %p.card-text.border-bottom.pb-2.mb-4
+          %strong= Shipping.human_attribute_name(:delivery_time_slot)
+          = formatted_delivery_time_slot(shipping.delivery_time_slot)
+    %hr.my-3
+    .row.mb-4
+      .col-md-12
+        %h5.mb-3 配送先
+        %p.card-text.border-bottom.pb-2.mb-4
+          %strong= Shipping.human_attribute_name(:full_name)
+          = full_name(shipping)
+        %p.card-text.border-bottom.pb-2.mb-4
+          %strong= Shipping.human_attribute_name(:tel)
+          = shipping.tel
+        %p.card-text.border-bottom.pb-2.mb-4
+          %strong= Shipping.human_attribute_name(:address)
+          = "〒#{shipping.post_code}"
+          %br
+          = address(shipping)
