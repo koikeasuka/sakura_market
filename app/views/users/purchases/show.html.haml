@@ -1,0 +1,14 @@
+%h2 購入履歴詳細
+.text-end= link_to '戻る', users_purchases_path, class: 'btn btn-secondary'
+- @purchase.purchase_items.each do |purchase_item|
+  .row.mb-3.align-items-center.cart-item
+    .col-md-2
+      = image_tag product_photo_image(purchase_item.item), class: 'img-fluid'
+    .col-md-1
+    .col-md-5
+      %h5.card-title= purchase_item.item.name
+    .col-md-2.text-end
+      %p.mb-0= number_to_currency(purchase_item.price)
+%hr.my-2
+  = render 'price_summary', purchase: @purchase
+  = render 'shipping_info', shipping: @purchase.shipping

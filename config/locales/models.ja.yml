@@ -27,3 +27,18 @@ ja:
         city: 市区町村
         other_address: その他住所
         address: 住所
+      purchase:
+        item_id: 商品
+        sub_total: 小計
+        shipping_fee: 送料
+        cash_on_delivery_fee: 代引き手数料
+        tax: 消費税
+        total_price: 支払金額
+        created_at: 購入日時
+      shipping:
+        delivery_date: 配送日
+        delivery_time_slot: 配送時間
+        full_name: 氏名
+        tel: 電話番号
+        post_code: 郵便番号
+        address: 住所
