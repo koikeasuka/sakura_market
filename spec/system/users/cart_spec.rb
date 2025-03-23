@@ -61,11 +61,12 @@ RSpec.describe 'カート', type: :system do
     end
 
     context '配送先住所が登録されていない場合' do
-      it '登録画面へのリンクが表示される' do
+      it '登録画面へのリンクが表示され、購入に進めない' do
         visit users_cart_path
 
         expect(page).to have_content '配送先住所の登録がされていません。配送先住所の登録がないと購入できません。'
         expect(page).to have_link '新規登録', href: new_users_shipping_address_path
+        expect(page).to have_button '購入する', disabled: true
       end
     end
   end
