@@ -5,8 +5,8 @@ RSpec.describe '商品画面', type: :system do
 
   describe '一覧' do
     before do
-      create(:item, name: 'みかん', description: '甘いみかんです', price: 500)
-      create(:item, name: 'トマト', description: '太陽のトマトです', price: 300)
+      create(:item, name: 'みかん', description: '甘いみかんです', price: 500, position: 1, is_published: true)
+      create(:item, name: 'トマト', description: '太陽のトマトです', price: 300, position: 2, is_published: false)
     end
 
     it '商品が表示されること' do
@@ -17,9 +17,11 @@ RSpec.describe '商品画面', type: :system do
       expect(page).to have_content 'みかん'
       expect(page).to have_content '甘いみかんです'
       expect(page).to have_content '500円'
+      expect(page).to have_content '公開中'
       expect(page).to have_content 'トマト'
       expect(page).to have_content '太陽のトマトです'
       expect(page).to have_content '300円'
+      expect(page).to have_content '非公開'
     end
 
     it 'ページの順番を入れ替えることができる', :js do
@@ -46,6 +48,7 @@ RSpec.describe '商品画面', type: :system do
       fill_in '商品名', with: '白菜'
       fill_in '商品説明', with: 'シャキシャキの白菜です'
       fill_in '価格', with: 200
+      check '公開状態'
 
       click_on '登録する'
 
@@ -56,7 +59,7 @@ RSpec.describe '商品画面', type: :system do
         # 登録後、詳細画面に遷移することを確認
         expect(page).to have_current_path admins_items_path
         expect(item.product_photo.blob.filename).to eq 'hakusai.png'
-        expect(item).to have_attributes(name: '白菜', description: 'シャキシャキの白菜です', price: 200)
+        expect(item).to have_attributes(name: '白菜', description: 'シャキシャキの白菜です', price: 200, is_published: true)
       end.to change(Item, :count).by(1)
     end
   end
@@ -64,7 +67,7 @@ RSpec.describe '商品画面', type: :system do
   describe '詳細' do
     before { sign_in yamada, scope: :admin }
 
-    let(:item) { create(:item, name: 'メロン', description: '種の少ないメロン', price: 1500, position: 1) }
+    let(:item) { create(:item, name: 'メロン', description: '種の少ないメロン', price: 1500, position: 1, is_published: false) }
 
     it '詳細画面が表示される' do
       visit admins_item_path(item)
@@ -74,6 +77,7 @@ RSpec.describe '商品画面', type: :system do
       expect(page).to have_content '種の少ないメロン'
       expect(page).to have_content '1,500円'
       expect(page).to have_content '表示順 1'
+      expect(page).to have_content '非公開'
     end
 
     it '削除できる', :js do
@@ -92,7 +96,7 @@ RSpec.describe '商品画面', type: :system do
   describe '編集' do
     before { sign_in yamada, scope: :admin }
 
-    let(:item) { create(:item, name: 'スイカ', description: '種の少ないスイカです', price: 1200) }
+    let(:item) { create(:item, name: 'スイカ', description: '種の少ないスイカです', price: 1200, is_published: true) }
 
     it '編集ができること' do
       visit edit_admins_item_path(item)
@@ -102,13 +106,14 @@ RSpec.describe '商品画面', type: :system do
       fill_in '商品名', with: '太陽のスイカ'
       fill_in '商品説明', with: '太陽をたくさん吸収した、種の少ない太陽のスイカです'
       fill_in '価格', with: 1500
+      uncheck '公開状態'
 
       click_on '更新する'
 
       expect(page).to have_content '商品情報を更新しました'
       item.reload
       expect(item.product_photo.blob.filename).to eq 'suika.png'
-      expect(item).to have_attributes(name: '太陽のスイカ', description: '太陽をたくさん吸収した、種の少ない太陽のスイカです', price: 1500)
+      expect(item).to have_attributes(name: '太陽のスイカ', description: '太陽をたくさん吸収した、種の少ない太陽のスイカです', price: 1500, is_published: false)
     end
   end
 end

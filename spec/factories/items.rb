@@ -3,5 +3,6 @@ FactoryBot.define do
     name { 'いちご' }
     description { '新鮮ないちごです' }
     price { 1000 }
+    is_published { true }
   end
 end
