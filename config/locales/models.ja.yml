@@ -43,3 +43,9 @@ ja:
         tel: 電話番号
         post_code: 郵便番号
         address: 住所
+      cart:
+        sub_total: 小計
+        shipping_fee: 送料
+        cash_on_delivery_fee: 代引き手数料
+        tax: 消費税
+        total_price: 合計金額

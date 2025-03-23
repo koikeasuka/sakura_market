@@ -6,7 +6,7 @@
   - @cart.cart_items.each do |cart_item|
     .row.mb-3.align-items-center.cart-item
       .col-md-2
-        = image_tag product_photo_image(cart_item.item), class: 'img-fluid'
+        = image_tag product_photo_thumb(cart_item.item), class: 'img-fluid'
       .col-md-1
       .col-md-5
         %h5.card-title= cart_item.item.name
