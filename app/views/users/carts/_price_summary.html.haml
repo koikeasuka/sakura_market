@@ -21,8 +21,9 @@
       .col-md-3.text-end
         %h5.mb-0= number_to_currency(cart.tax)
     %hr.my-3
-    .row.align-items-center
+    .row.align-items-center.mb-2
       .col-md-9
         %h4.mb-0= Cart.human_attribute_name(:total_price)
       .col-md-3.text-end
         %h4.mb-0= number_to_currency(@cart.total_price)
+    = render 'price_info_modal'

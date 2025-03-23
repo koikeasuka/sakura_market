@@ -1,0 +1,26 @@
+%button.btn.btn-sm.btn-light{"data-bs-target" => "#price-info-modal", "data-bs-toggle" => "modal", type: "button"}
+  金額の算出方法について
+#price-info-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "price-info-modal-label", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %h1#price-info-modal-label.modal-title.fs-5 金額の算出方法について
+        %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "modal", type: "button"}
+      .modal-body
+        %h5.mb-3 送料
+        %p 5商品ごとに600円かかります。
+        %hr.my-2
+        %h5.mb-3 代引き手数料
+        %p
+          0-10,000円未満：300円
+          %br/
+          10,000-30,000円未満：400円
+          %br/
+          30,000-100,000円未満：600円
+          %br/
+          100,000円以上：1,000円
+        %hr.my-2
+        %h5.mb-3 消費税
+        %p 商品の合計金額、送料、代引き手数料の合計に対して8%の消費税で計算しています。
+      .modal-footer
+        %button.btn.btn-secondary{"data-bs-dismiss" => "modal", type: "button"} 閉じる
