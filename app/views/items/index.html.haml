@@ -3,7 +3,7 @@
 .row
   - @items.each do |item|
     .col-md-4
-      .card.mb-4.border-0
+      .card.mb-4.border-0.item-card
         = image_tag product_photo_image(item), class: 'card-img-top'
         .card-body
           %p.card-title.fw-bold= link_to item.name, item_path(item),

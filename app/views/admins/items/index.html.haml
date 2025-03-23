@@ -4,8 +4,8 @@
   %thead
     %tr
       %th= Item.human_attribute_name(:name)
-      %th= Item.human_attribute_name(:description)
       %th= Item.human_attribute_name(:price)
+      %th= Item.human_attribute_name(:description)
       %th= Item.human_attribute_name(:is_published)
 
   %tbody{ data: { controller: 'sortable', 'sortable-resource-name-value': 'item', 'sortable-param-name-value': 'position'}}
