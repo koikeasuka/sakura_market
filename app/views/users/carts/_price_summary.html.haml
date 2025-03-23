@@ -2,27 +2,27 @@
   .card-body
     .row.align-items-center.mb-2
       .col-md-9
-        %h5.mb-0 小計
+        %h5.mb-0= Cart.human_attribute_name(:sub_total)
       .col-md-3.text-end
         %h5.mb-0= number_to_currency(cart.sub_total)
     .row.align-items-center.mb-2
       .col-md-9
-        %h5.mb-0 送料
+        %h5.mb-0= Cart.human_attribute_name(:shipping_fee)
       .col-md-3.text-end
         %h5.mb-0= number_to_currency(cart.shipping_fee)
     .row.align-items-center.mb-2
       .col-md-9
-        %h5.mb-0 代引き手数料
+        %h5.mb-0= Cart.human_attribute_name(:cash_on_delivery_fee)
       .col-md-3.text-end
         %h5.mb-0= number_to_currency(cart.cash_on_delivery_fee)
     .row.align-items-center.mb-2
       .col-md-9
-        %h5.mb-0 消費税
+        %h5.mb-0= Cart.human_attribute_name(:tax)
       .col-md-3.text-end
         %h5.mb-0= number_to_currency(cart.tax)
     %hr.my-3
     .row.align-items-center
       .col-md-9
-        %h4.mb-0 合計
+        %h4.mb-0= Cart.human_attribute_name(:total_price)
       .col-md-3.text-end
         %h4.mb-0= number_to_currency(@cart.total_price)
