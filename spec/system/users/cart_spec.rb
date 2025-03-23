@@ -78,6 +78,22 @@ RSpec.describe 'カート', type: :system do
     end
   end
 
+  context 'カート内に非公開の商品が入っている場合' do
+    before do
+      cart = create(:cart, user: yamada)
+      item = create(:item, name: 'バナナ', price: 150, is_published: true)
+      create(:cart_item, cart: cart, item: item)
+      item.update!(is_published: false)
+    end
+
+    it '削除するよう促され、購入に進めない' do
+      visit users_cart_path
+
+      expect(page).to have_content '購入できない商品のためカートから削除してください'
+      expect(page).to have_button '購入する', disabled: true
+    end
+  end
+
   describe '商品詳細' do
     let(:item) { create(:item) }
 
