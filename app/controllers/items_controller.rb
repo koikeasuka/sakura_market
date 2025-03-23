@@ -4,6 +4,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    @item = Item.is_published.find(params[:id])
   end
 end
