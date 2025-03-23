@@ -27,3 +27,7 @@ ja:
         city: 市区町村
         other_address: その他住所
         address: 住所
+      purchase:
+        item_id: 商品
+        total_price: 支払金額
+        created_at: 購入日時
