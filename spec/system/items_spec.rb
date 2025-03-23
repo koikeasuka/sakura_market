@@ -3,15 +3,24 @@ require 'rails_helper'
 RSpec.describe '商品画面', type: :system do
   describe '一覧' do
     before do
-      create(:item, name: 'みかん', price: 500, is_published: true)
-      create(:item, name: 'トマト', price: 300, is_published: false)
+      create(:item, name: 'みかん', price: 500, is_published: true, position: 1)
+      create(:item, name: 'レモン', price: 400, is_published: true, position: 2)
+      create(:item, name: 'トマト', price: 300, is_published: false, position: 3)
     end
 
-    it '商品が表示されること' do
+    it '順番通りに商品が表示され、非表示の商品は見えない' do
       visit root_path
 
-      expect(page).to have_content 'みかん'
-      expect(page).to have_content '500円'
+      within first('.item-card') do
+        expect(page).to have_content 'みかん'
+        expect(page).to have_content '500円'
+      end
+
+      within all('.item-card')[1] do
+        expect(page).to have_content 'レモン'
+        expect(page).to have_content '400円'
+      end
+
       expect(page).not_to have_content 'トマト'
       expect(page).not_to have_content '300円'
     end
