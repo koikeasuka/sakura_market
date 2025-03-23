@@ -3,7 +3,7 @@
 - @purchase.purchase_items.each do |purchase_item|
   .row.mb-3.align-items-center.cart-item
     .col-md-2
-      = image_tag product_photo_image(purchase_item.item), class: 'img-fluid'
+      = image_tag product_photo_thumb(purchase_item.item), class: 'img-fluid'
     .col-md-1
     .col-md-5
       %h5.card-title= purchase_item.item.name
