@@ -14,14 +14,19 @@ RSpec.describe '商品画面', type: :system do
 
       visit admins_items_path
 
-      expect(page).to have_content 'みかん'
-      expect(page).to have_content '甘いみかんです'
-      expect(page).to have_content '500円'
-      expect(page).to have_content '公開中'
-      expect(page).to have_content 'トマト'
-      expect(page).to have_content '太陽のトマトです'
-      expect(page).to have_content '300円'
-      expect(page).to have_content '非公開'
+      within first('tbody tr') do
+        expect(first('td')).to have_content 'みかん'
+        expect(all('td')[1]).to have_content '500円'
+        expect(all('td')[2]).to have_content '甘いみかんです'
+        expect(all('td')[3]).to have_content '公開中'
+      end
+
+      within all('tbody tr')[1] do
+        expect(first('td')).to have_content 'トマト'
+        expect(all('td')[1]).to have_content '300円'
+        expect(all('td')[2]).to have_content '太陽のトマトです'
+        expect(all('td')[3]).to have_content '非公開'
+      end
     end
 
     it 'ページの順番を入れ替えることができる', :js do
