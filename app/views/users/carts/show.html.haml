@@ -14,10 +14,12 @@
         %p.mb-0= number_to_currency(cart_item.item.price)
       .col-md-2.text-end
         = button_to '削除', users_cart_item_path(cart_item), method: :delete, data: { turbo_confirm: '削除してもよろしいですか' }, class: 'btn btn-light'
+    - if !cart_item.item.is_published
+      %small.text-danger 購入できない商品のためカートから削除してください
     %hr.my-2
   = simple_form_for @cart_shipping, method: :post, url: users_purchases_path do |f|
     = render 'price_summary', cart: @cart
     = render 'shipping_info', f: f
     .d-flex.justify-content-end
       .p-2= link_to '買い物を続ける', items_path, class: 'btn btn-outline-secondary btn-lg'
-      .p-2= f.button :submit, '購入する', class: 'btn btn-secondary btn-lg', disabled: current_user.shipping_address.nil?
+      .p-2= f.button :submit, '購入する', class: 'btn btn-secondary btn-lg', disabled: unable_to_purchase?(@cart)

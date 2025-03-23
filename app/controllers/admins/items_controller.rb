@@ -50,7 +50,7 @@ class Admins::ItemsController < Admins::ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :description, :price, :product_photo)
+    params.require(:item).permit(:name, :description, :price, :product_photo, :is_published)
   end
 
   def sort_params

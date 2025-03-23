@@ -33,6 +33,11 @@ class Cart < ApplicationRecord
       return false
     end
 
+    if has_close_item?
+      errors.add(:base, '購入できない商品が含まれているため購入できませんでした')
+      return false
+    end
+
     purchase = build_purchase_with_associations(cart_shipping)
 
     transaction do
@@ -55,5 +60,9 @@ class Cart < ApplicationRecord
                             delivery_date: cart_shipping[:delivery_date], delivery_time_slot_id: cart_shipping[:delivery_time_slot_id])
 
     purchase
+  end
+
+  def has_close_item?
+    cart_items.any? { |cart_item| cart_item.item.is_published == false }
   end
 end

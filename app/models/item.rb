@@ -12,6 +12,8 @@ class Item < ApplicationRecord
   validates :price, presence: true
   before_validation :set_position
 
+  scope :is_published, -> { where(is_published: true) }
+
   private
 
   def set_position

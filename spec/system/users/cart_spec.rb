@@ -61,11 +61,12 @@ RSpec.describe 'カート', type: :system do
     end
 
     context '配送先住所が登録されていない場合' do
-      it '登録画面へのリンクが表示される' do
+      it '登録画面へのリンクが表示され、購入に進めない' do
         visit users_cart_path
 
         expect(page).to have_content '配送先住所の登録がされていません。配送先住所の登録がないと購入できません。'
         expect(page).to have_link '新規登録', href: new_users_shipping_address_path
+        expect(page).to have_button '購入する', disabled: true
       end
     end
   end
@@ -75,6 +76,22 @@ RSpec.describe 'カート', type: :system do
       visit users_cart_path
 
       expect(page).to have_link 'TOPページへ', href: items_path
+    end
+  end
+
+  context 'カート内に非公開の商品が入っている場合' do
+    before do
+      cart = create(:cart, user: yamada)
+      item = create(:item, name: 'バナナ', price: 150, is_published: true)
+      create(:cart_item, cart: cart, item: item)
+      item.update!(is_published: false)
+    end
+
+    it '削除するよう促され、購入に進めない' do
+      visit users_cart_path
+
+      expect(page).to have_content '購入できない商品のためカートから削除してください'
+      expect(page).to have_button '購入する', disabled: true
     end
   end
 

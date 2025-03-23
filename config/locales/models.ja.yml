@@ -17,6 +17,7 @@ ja:
         price: 価格
         product_photo: 商品画像
         position: 表示順
+        is_published: 公開状態
       shipping_address:
         last_name: 姓
         first_name: 名
