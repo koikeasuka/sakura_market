@@ -4,7 +4,7 @@ class Users::PurchasesController < Users::ApplicationController
   end
 
   def show
-    @purchase = current_user.purchases.find(params[:id])
+    @purchase = current_user.purchases.includes(purchase_items: :item).find(params[:id])
   end
 
   def create
