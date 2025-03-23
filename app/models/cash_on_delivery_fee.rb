@@ -1,6 +1,4 @@
 class CashOnDeliveryFee < ActiveHash::Base
-  include ActiveHash::Associations
-
   self.data = [
     {
       id: 1,
