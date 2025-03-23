@@ -6,6 +6,7 @@
       %th= Item.human_attribute_name(:name)
       %th= Item.human_attribute_name(:description)
       %th= Item.human_attribute_name(:price)
+      %th= Item.human_attribute_name(:is_published)
 
   %tbody{ data: { controller: 'sortable', 'sortable-resource-name-value': 'item', 'sortable-param-name-value': 'position'}}
     - @items.each do |item|
@@ -14,3 +15,8 @@
           class: 'link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover ms-2'
         %td= number_to_currency(item.price)
         %td= item.description
+        %td
+          - if item.is_published
+            %span.badge.text-bg-success 公開中
+          - else
+            %span.badge.text-bg-light 非公開
