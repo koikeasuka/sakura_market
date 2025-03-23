@@ -1,0 +1,7 @@
+business_time:
+  work_week:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri

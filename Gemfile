@@ -5,6 +5,7 @@ gem 'rails', '~> 8.0.2'
 gem 'active_hash'
 gem 'acts_as_list'
 gem 'bootsnap', require: false
+gem 'business_time'
 gem 'cssbundling-rails'
 gem 'devise'
 gem 'haml-rails'

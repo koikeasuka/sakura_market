@@ -1,0 +1,35 @@
+.card.mb-2
+  .card-body
+    -# 購入まで進めないため、一時的にform_withで見た目を作成
+    = form_with url: '#', method: :post, class: 'delivery-form' do |f|
+      .row.mb-4
+        .col-md-12
+          %h5.mb-3 配送日
+          = f.date_field :delivery_date, class: 'form-control', min: 3.business_day.from_now, max: 14.business_day.from_now, required: true
+      %hr.my-3
+      .row.mb-4
+        .col-md-12
+          %h5.mb-3 配送時間帯
+          = f.select :delivery_time_slot, options_for_select(DeliveryTimeSlot.all.map { |d| [d.name, d.id] }),
+          { class: 'form-select', required: true }
+          %small.form-text.text-muted ご希望の時間帯をお選びください
+      %hr.my-3
+      .row.mb-4
+        .col-md-12
+          %h5.mb-3 配送先住所
+          - if current_user.shipping_address
+            %p
+              %strong= ShippingAddress.human_attribute_name(:full_name)
+              = full_name(current_user.shipping_address)
+            %p
+              %strong= ShippingAddress.human_attribute_name(:tel)
+              = current_user.shipping_address.tel
+            %p
+              %strong= ShippingAddress.human_attribute_name(:address)
+              = "〒#{current_user.shipping_address.post_code}"
+              %br
+              = address(current_user.shipping_address)
+            = link_to '編集', edit_users_shipping_address_path, class: 'btn btn-outline-secondary'
+          - else
+            %p 配送先住所の登録がされていません。配送先住所の登録がないと購入できません。
+            = link_to '新規登録', new_users_shipping_address_path, class: 'btn btn-outline-secondary'
