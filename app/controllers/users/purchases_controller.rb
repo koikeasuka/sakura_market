@@ -1,4 +1,12 @@
 class Users::PurchasesController < Users::ApplicationController
+  def index
+    @purchases = current_user.purchases.order(id: :desc)
+  end
+
+  def show
+    @purchase = current_user.purchases.find(params[:id])
+  end
+
   def create
     @purchase = current_cart.purchase(permit_params)
     if @purchase
