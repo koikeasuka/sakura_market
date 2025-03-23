@@ -1,5 +1,5 @@
 %h2 TOPページ
-= paginate @items
+!= pagy_bootstrap_nav(@pagy)
 .row
   - @items.each do |item|
     .col-md-4
@@ -9,4 +9,4 @@
           %p.card-title.fw-bold= link_to item.name, item_path(item),
           class: 'link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover ms-2'
           %p.card-text= number_to_currency(item.price)
-= paginate @items
+!= pagy_bootstrap_nav(@pagy)
