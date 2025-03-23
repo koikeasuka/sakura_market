@@ -12,5 +12,8 @@
       %strong= Purchase.human_attribute_name(:cash_on_delivery_fee)
       = number_to_currency(@purchase.cash_on_delivery_fee)
     %p.card-text.border-bottom.pb-2.mb-4
+      %strong= Purchase.human_attribute_name(:tax)
+      = number_to_currency(@purchase.tax)
+    %p.card-text.border-bottom.pb-2.mb-4
       %strong= Purchase.human_attribute_name(:total_price)
       = number_to_currency(@purchase.total_price)
