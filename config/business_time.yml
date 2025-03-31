@@ -1,4 +1,6 @@
 business_time:
+  beginning_of_workday: 0:00 am
+  end_of_workday: 11:59 pm
   work_week:
     - mon
     - tue
